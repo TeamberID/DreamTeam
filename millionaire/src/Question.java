@@ -2,12 +2,15 @@
 public class Question {
     private String question;
     private String answers[];
-    private final int RIGHT_ANSWER;
-    private int points;
-    public Question(String question, String answers[], int rightAnswer, int points) {
+    public final int RIGHT_ANSWER;
+    public final int LEVEL;
+    private int level;
+
+    //    private int points;
+    public Question(String question, String answers[], int rightAnswer, int level) {
         this.question = question;
         this.answers = answers;
-        this.points = points;
+        LEVEL = level;
         RIGHT_ANSWER = rightAnswer;
     }
     public void ask() {
@@ -16,7 +19,15 @@ public class Question {
             System.out.println("    " + (i + 1) + ") " + answers[i]);
         }
     }
-    public int checkAnswer(int answer){
-        return answer == RIGHT_ANSWER ? points : 0;
+    public boolean checkAnswer(int answer){
+        return answer == RIGHT_ANSWER;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public void showRightAnswer() {
+        System.out.println("Правильный ответ : " + answers[RIGHT_ANSWER - 1]);
     }
 }
